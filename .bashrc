@@ -1,6 +1,15 @@
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
 # Shortcuts
 alias ee="exit"
-alias vim='vim -u ~/vimboilerplate/vimrc'
+alias vim='vi -u ~/vimboilerplate/vimrc'
+alias vi='vi -u ~/vimboilerplate/vimrc'
 alias ll='ls -lah'
 
 # Load private configs
