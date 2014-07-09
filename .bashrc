@@ -8,8 +8,8 @@ fi
 
 # Shortcuts
 alias ee="exit"
-alias vim='vi -u ~/vimboilerplate/vimrc'
-alias vi='vi -u ~/vimboilerplate/vimrc'
+alias vim='vim -u ~/vimboilerplate/vimrc'
+alias vi='vim -u ~/vimboilerplate/vimrc'
 alias ll='ls -lah'
 
 # Load private configs
