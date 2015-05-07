@@ -1,0 +1,21 @@
+[submodule "pathogen/bundle/vim-pathogen"]
+	path = pathogen/bundle/vim-pathogen
+	url = git@github.com:tpope/vim-pathogen.git
+[submodule "pathogen/bundle/vim-gundo"]
+	path = pathogen/bundle/vim-gundo
+	url = git@github.com:sjl/gundo.vim.git
+[submodule "pathogen/bundle/vim-markdown"]
+	path = pathogen/bundle/vim-markdown
+	url = git@github.com:plasticboy/vim-markdown.git
+[submodule "pathogen/bundle/vim-nerdtree"]
+	path = pathogen/bundle/vim-nerdtree
+	url = git@github.com:scrooloose/nerdtree.git
+[submodule "pathogen/bundle/vim-surround"]
+	path = pathogen/bundle/vim-surround
+	url = git@github.com:tpope/vim-surround.git
+[submodule "pathogen/bundle/vim-syntastic"]
+	path = pathogen/bundle/vim-syntastic
+	url = git@github.com:scrooloose/syntastic.git
+[submodule "pathogen/bundle/vim-YouCompleteMe"]
+	path = pathogen/bundle/vim-YouCompleteMe
+	url = git@github.com:Valloric/YouCompleteMe.git

@@ -157,3 +157,7 @@ endtry
 " PLUGIN: NERDTree
 " Load file browser more quickly witih ',nt'
 autocmd VimEnter * if exists(':NERDTreeToggle') | exe "map <leader>nt :NERDTreeToggle<CR>" | endif
+
+" PLUGIN: Gundo
+" Load Gundo more quickly witih ',gu'
+autocmd VimEnter * if exists(':GundoToggle') | exe "map <leader>gu :GundoToggle<CR>" | endif
