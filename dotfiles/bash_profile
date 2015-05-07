@@ -6,3 +6,6 @@ fi
 
 PATH=$PATH:$HOME/.local/bin:$HOME/bin
 export PATH
+
+# Dynamic MOTD with sys info
+~/workflow/bin/dynmotd.sh

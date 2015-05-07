@@ -6,6 +6,7 @@ fi
 # Shortcuts
 alias ee="exit"
 alias ll='ls -lah'
+alias gst='git status'
 
 # Load private configs
 if [ -f ~/.bashrc_private ]; then

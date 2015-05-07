@@ -1,5 +1,3 @@
-" Mark Hammonds <mark@bitmotive.com>
-"
 " DESCRIPTION:
 " This vim configuration utilizes a number of different plugins but
 " is reliant on none of them. You should be able to load it on any
@@ -176,11 +174,3 @@ try
 catch
     " Do nothing
 endtry
-
-" -------------------------------------
-" SOURCE PRIVATE VIMRC KEPT OUTSIDE VCS
-" -------------------------------------
-let uservimrc=expand("~/.vimrc_private")
-if filereadable( uservimrc )
-    execute "source ".uservimrc
-endif
