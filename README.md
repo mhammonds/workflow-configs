@@ -3,31 +3,26 @@ A collection of configuration files essential to my daily work on UNIXy systems.
 Bash Configuration
 -------------------
 
-The __.bash\_profile__ file is executed for login shells (e.g. when you SSH into a 
-server), while the __.bashrc__ file is executed for any interactive, non-login 
-shell (e.g. Opening gnome-terminal, running the 'bash' command directly, 
-opening a new terminal tab). You can view this behavior on your own 
-environment by adding a `echo 'Hello bashrc'` or `echo 'Hello bash_profile'` 
-command into each file. 
+`.bash_profile` is executed for login shells (e.g. connecting to a 
+server over SSH), while `.bashrc` is executed for interactive, non-login 
+shells (e.g. running the 'bash' command directly, opening a new terminal tab).
 
-In my scenario, I virtually always work with interactive, non-login shells. In 
-fact, the only time my __.bash\_profile__ runs is if I'm logging in 
-somewhere via SSH. So, __.bash\_profile__ for me is just a simple wrapper around
-__.bashrc__. The only addition I've made is a call to a custom motd script that 
-provides some system level information at login that is useful to know when
-first connecting to a machine.
+For the most part, my `.bash_profile` just wraps `.bashrc`. The only
+interesting functionality I've added is a call to a custom login script,
+`dynmotd.sh` which displays information about the OS and is useful when 
+logging in over SSH. 
 
-As for my __.bashrc__, nothing much going on there. Just a few simple alias 
-shortcuts for commonly used tasks. However, I also use the bashrc file to wrap
-a non-versioned __.bashrc\_private__ file that can bootstrap sensitive 
-environment variables or perform other sensitive tasks that shouldn't be 
-contained in source control.
+As for my `.bashrc` file, it's really just a few simple alias 
+shortcuts for commonly used tasks. However, I also keep a 
+non-versioned `.bashrc_private` file that is called from 
+`.bashrc` and can bootstrap sensitive environment variables or perform 
+other tasks that shouldn't be committed to source control but should 
+be part of the local environment.
 
 ### Config Files:
 - `dotfiles/bashrc`
 - `dotfiles/bash_profile`
 - `bin/dynmotd.sh`
-- `dotfiles/bashrc_private` (not included, stores sensitive commands)
 
 ### Bash Shell Tutorials:
 - [Enhancements to Shell and Vim Productivity](https://danielmiessler.com/blog/enhancements-to-shell-and-vim-productivity/)

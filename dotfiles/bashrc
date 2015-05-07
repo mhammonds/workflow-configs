@@ -3,10 +3,15 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-# Shortcuts
+# CLI Shortcuts
 alias ee="exit"
 alias ll='ls -lah'
-alias gst='git status'
+
+# Git Shortcuts
+alias gts='git status'
+alias gta='git add' 
+alias gtc='git commit'
+alias gtd='git diff'
 
 # Load private configs
 if [ -f ~/.bashrc_private ]; then
