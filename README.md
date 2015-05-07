@@ -84,6 +84,7 @@ at __/workflow/pathogen/bundle__.
 
 ### Config Files:
 - `dotfiles/vimrc`
+- `pathogen`
 
 ### Vim Tutorials:
 - [A Vim Tutorial and Primer](https://danielmiessler.com/study/vim/)
