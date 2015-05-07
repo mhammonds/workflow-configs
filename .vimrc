@@ -1,10 +1,108 @@
-" Enable Vim Boilerplate Shortcuts
-if exists("*VBPShortcuts")
-    autocmd VimEnter * :call VBPShortcuts()
-else
-    so ~/vimboilerplate/vimrc
-    call VBPShortcuts()
+" Mark Hammonds <mark@bitmotive.com>
+"
+" DESCRIPTION:
+" This vim configuration utilizes a number of different plugins but
+" is reliant on none of them. You should be able to load it on any
+" UNIXy platform with a vim version > 7 thanks to the included conditionals.
+" I launch production servers with this config but without plugins.
+"
+" That said, I highly recommend the following plugins as a baseline for most use cases:
+"
+" - Pathogen
+" - Surround
+" - NERDTree
+"
+" PRO TIP:
+" Get the most out of VIM. Remap your CAPSLOCK to CTRL.
+" Details - http://www.danielmiessler.com/blog/enhancements-to-shell-and-vim-productivity#capslock
+
+" ------------------------
+" BASELINE SETTINGS
+" ------------------------
+
+" Configure default file encoding
+if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
+    set fileencodings=ucs-bom,utf-8,latin1
 endif
+
+" Don't wake up system with blinking cursor
+let &guicursor = &guicursor . ",a:blinkon0"
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+    syntax on
+    set hlsearch
+endif
+
+" When editing a file, always jump to the last cursor position
+autocmd BufReadPost *
+\ if line("'\"") > 0 && line ("'\"") <= line("$") |
+\ exe "normal! g'\"" |
+\ endif
+
+" Prevent the cursor from moving when exiting INSERT mode
+let CursorColumnI = 0 "the cursor column position in INSERT
+autocmd InsertEnter * let CursorColumnI = col('.')
+autocmd CursorMovedI * let CursorColumnI = col('.')
+autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) | endif
+
+" Don't write swapfile on most commonly used directories for NFS mounts or USB sticks
+autocmd BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
+
+" Enable plugin support
+filetype plugin on
+
+" Sanity checks: make Vim perform more like a modern editor
+set nocompatible " Ensure that we're running in Vi Improved mode.
+set ruler " Show the cursor position all the time
+set number " Show line numbers in left gutter
+set viminfo='20,\"50 " read/write a .viminfo file, don't store more than 50 lines of registers
+set nowrap " Do not visually line-wrap text
+set backspace=2 " Backspaces over indent, eol, and start
+set history=100 " Keep the last 100 commands. Vim default is 20, vi default is 0, and RHEL system default is 50.
+set autoindent " Will autoindent the next line
+
+" Tab management
+set expandtab " Use spaces instead of tab characters
+set tabstop=4 " Set number of columns a tab will cover visually
+set softtabstop=4 " Set number of columns for tab when in insert mode
+set shiftwidth=4 " Set number of columns < or > will indent text
+
+" ------------------------
+" EDITOR SHORTCUTS
+" ------------------------
+
+" A better leader: ',' is more efficient and ergonomic than ':'
+let mapleader = ","
+
+" Map 'jk' to the ESC command.
+imap jk <ESC>
+
+" Shortcut to forcibly save file with ,w
+map <leader>w :w!<cr>
+
+" Shortcut to forcibly exit file w/out saving
+map <leader>q :q!<cr>
+
+" Toggle spellcheck
+map <leader>s :set spell!<cr>
+
+" Toggle search highlight
+map <leader>h :set hlsearch!<cr>
+
+" Toggle paste mode
+map <leader>pa :set paste!<cr>
+
+" Toggle number gutter
+map <leader>li :set number!<cr>
+
+" Shorcut to fix spelling
+map <leader>f 1z=
+
+" Trick for easily repeating task
+" in vertical-block mode using '.'
+map . :norm.<CR>
 
 " Easily reload VIM configuration
 map <leader>rc :so ~/.vimrc<CR>
@@ -12,13 +110,23 @@ map <leader>rc :so ~/.vimrc<CR>
 " Search bar from insert mode
 imap <C-f> <ESC>/
 
+" Jump into bash shell
+map <leader>sh :shell<CR>
+
+" ------------------------
+" Window Management
+" ------------------------
+
 " New windows open below or to the right
 set splitbelow
 set splitright
 
-" Quickly resize splits
-map <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-map <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+" Navigate Vim windows with
+" just CTRL + direction key
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 
 " Easily reposition windows 
 map <leader>Wl <C-w>L " Move window far right
@@ -27,11 +135,52 @@ map <leader>Wj <C-w>J " Move window to bottom
 map <leader>Wk <C-w>K " Move window to top
 map <leader>Wr <C-w>R " Rotate window UP or LEFT
 
-" Jump into bash shell
-map <leader>sh :shell<CR>
+" Quickly resize splits
+map <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+map <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
-" Prevent the cursor from moving when exiting INSERT mode
-let CursorColumnI = 0 "the cursor column position in INSERT
-autocmd InsertEnter * let CursorColumnI = col('.')
-autocmd CursorMovedI * let CursorColumnI = col('.')
-autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) | endif
+" ------------------------
+" PLUGIN SHORTCUTS
+" ------------------------
+
+" PLUGIN: NERDTree
+" Load file browser more quickly witih ',nt'
+if exists(':NERDTreeToggle')
+    " Shortcut for launching
+    nmap <leader>nt :NERDTreeToggle<CR>
+endif
+
+" ------------------------
+" RUNTIME CONFIGURATIONS
+" ------------------------
+" Vim Boilerplate is a git repo of plugins managed by Pathogen.
+" The project goal is to modernize Vim and bring feature parity
+" with competing editors such as SublimeText and Brackets.
+" This section inits both Vim Boilerplate and Pathogen.
+
+" Check if user has supplied custom Vim Boilerplate directory
+if strlen($VBPDIRECTORY) > 0
+   let vbpdirectory=$VBPDIRECTORY
+else
+   let vbpdirectory=expand("~/vimboilerplate")
+endif
+
+" Add Vim Boilerplate to Vim's runtime
+let &runtimepath.=','.escape(vbpdirectory, '\,')
+
+" Initiate pathogen
+try
+    let pathogenfile=vbpdirectory."/bundle/vim-pathogen/autoload/pathogen.vim"
+    execute "source ".pathogenfile
+    call pathogen#infect()
+catch
+    " Do nothing
+endtry
+
+" -------------------------------------
+" SOURCE PRIVATE VIMRC KEPT OUTSIDE VCS
+" -------------------------------------
+let uservimrc=expand("~/.vimrc_private")
+if filereadable( uservimrc )
+    execute "source ".uservimrc
+endif
