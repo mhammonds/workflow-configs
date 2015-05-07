@@ -12,6 +12,7 @@ alias gts='git status'
 alias gta='git add' 
 alias gtc='git commit'
 alias gtd='git diff'
+alias gtrm='git rm'
 
 # Load private configs
 if [ -f ~/.bashrc_private ]; then

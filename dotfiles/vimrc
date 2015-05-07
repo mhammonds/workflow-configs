@@ -19,9 +19,7 @@
 " ------------------------
 
 " Configure default file encoding
-if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
-    set fileencodings=ucs-bom,utf-8,latin1
-endif
+set fileencodings=ucs-bom,utf-8,latin1
 
 " Don't wake up system with blinking cursor
 let &guicursor = &guicursor . ",a:blinkon0"
@@ -138,39 +136,24 @@ map <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 map <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " ------------------------
-" PLUGIN SHORTCUTS
+" PATHOGEN CONFIGURATIONS
 " ------------------------
-
-" PLUGIN: NERDTree
-" Load file browser more quickly witih ',nt'
-if exists(':NERDTreeToggle')
-    " Shortcut for launching
-    nmap <leader>nt :NERDTreeToggle<CR>
-endif
-
-" ------------------------
-" RUNTIME CONFIGURATIONS
-" ------------------------
-" Vim Boilerplate is a git repo of plugins managed by Pathogen.
-" The project goal is to modernize Vim and bring feature parity
-" with competing editors such as SublimeText and Brackets.
-" This section inits both Vim Boilerplate and Pathogen.
-
-" Check if user has supplied custom Vim Boilerplate directory
-if strlen($VBPDIRECTORY) > 0
-   let vbpdirectory=$VBPDIRECTORY
-else
-   let vbpdirectory=expand("~/vimboilerplate")
-endif
-
-" Add Vim Boilerplate to Vim's runtime
-let &runtimepath.=','.escape(vbpdirectory, '\,')
 
 " Initiate pathogen
 try
-    let pathogenfile=vbpdirectory."/bundle/vim-pathogen/autoload/pathogen.vim"
+    let pathogendir=expand("~/workflow/pathogen")
+    let &runtimepath.=','.escape(pathogendir, '\,')
+    let pathogenfile=pathogendir."/bundle/vim-pathogen/autoload/pathogen.vim"
     execute "source ".pathogenfile
     call pathogen#infect()
 catch
     " Do nothing
 endtry
+
+" ------------------------
+" PLUGIN SHORTCUTS
+" ------------------------
+
+" PLUGIN: NERDTree
+" Load file browser more quickly witih ',nt'
+autocmd VimEnter * if exists(':NERDTreeToggle') | exe "map <leader>nt :NERDTreeToggle<CR>" | endif

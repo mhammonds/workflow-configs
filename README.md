@@ -77,13 +77,10 @@ Over the years, I've grown to think of Vim as more of an extension of myself
 than a text editor. This is the result of both [Vim's philosophy](http://stevelosh.com/blog/2010/09/coming-home-to-vim/#vims-feeling)
 as well its extensive capacity for configuration.  
 
-In addition to my baseline Vim configuration file, I'm also (slowly) working
-on a project called [Vim Boilerplate](https://github.com/bitmotive/VimBoilerplate)
-which is an attempt to achieve feature parity with editors like SublimeText and
-Brackets. This achieved by simply combining Vim plugins managed by Pathogen into 
-one repo. Consequently, a section of my Vim configuration enables VimBoilerplate,
-but does so in a 'progressively enhanced' way meaning everything will still work
-just fine even if Vim Boilerplate isn't available on the local system.
+In addition to my baseline Vim configuration file, I also use a 
+collection of plugins that can rival more feature-rich editors 
+like SublimeText or Brackets. These plugins are managed by pathogen and live
+at __/workflow/pathogen/bundle__. 
 
 ### Config Files:
 - `dotfiles/vimrc`
