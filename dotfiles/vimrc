@@ -58,6 +58,7 @@ set nowrap " Do not visually line-wrap text
 set backspace=2 " Backspaces over indent, eol, and start
 set history=100 " Keep the last 100 commands. Vim default is 20, vi default is 0, and RHEL system default is 50.
 set autoindent " Will autoindent the next line
+set ignorecase " Allow case insensitive searching. Use \c to make search case sensitive again.
 
 " Tab management
 set expandtab " Use spaces instead of tab characters
