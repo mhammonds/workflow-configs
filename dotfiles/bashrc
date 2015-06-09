@@ -3,6 +3,9 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+# Vim Bindings
+set -o vi
+
 # CLI Shortcuts
 alias ee="exit"
 alias ll='ls -lah'
@@ -13,6 +16,16 @@ alias gta='git add'
 alias gtc='git commit'
 alias gtd='git diff'
 alias gtrm='git rm'
+
+# Vagrant Shortcuts
+alias vgs='vagrant status'
+alias vgu='vagrant up'
+alias vgh='vagrant halt'
+alias vgd='vagrant destroy'
+alias vgs='vagrant suspend'
+
+# Customize Bash Prompt
+PS1='\w \$ '
 
 # Load private configs
 if [ -f ~/.bashrc_private ]; then
