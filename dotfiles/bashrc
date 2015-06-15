@@ -16,6 +16,7 @@ alias gta='git add'
 alias gtc='git commit'
 alias gtd='git diff'
 alias gtrm='git rm'
+alias gtsubup='git submodule update --init --recursive'
 
 # Vagrant Shortcuts
 alias vgs='vagrant status'
