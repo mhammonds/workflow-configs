@@ -155,6 +155,10 @@ endtry
 " PLUGIN SHORTCUTS
 " ------------------------
 
+" PLUGIN: Emmet
+" Rebind emmet key code to ',h,'
+let g:user_emmet_leader_key='<C-h>'
+
 " PLUGIN: NERDTree
 " Load file browser more quickly witih ',nt'
 autocmd VimEnter * if exists(':NERDTreeToggle') | exe "map <leader>nt :NERDTreeToggle<CR>" | endif

@@ -22,3 +22,9 @@
 [submodule "submodules/gitignore"]
 	path = submodules/gitignore
 	url = git@github.com:bitmotive/gitignore.git
+[submodule "submodules/homebrew-cask"]
+	path = submodules/homebrew-cask
+	url = git@github.com:mhammonds/homebrew-cask.git
+[submodule "pathogen/bundle/vim-emmet"]
+	path = pathogen/bundle/vim-emmet
+	url = https://github.com/mattn/emmet-vim.git
