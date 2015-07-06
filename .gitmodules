@@ -28,3 +28,9 @@
 [submodule "pathogen/bundle/vim-emmet"]
 	path = pathogen/bundle/vim-emmet
 	url = https://github.com/mattn/emmet-vim.git
+[submodule "pathogen/bundle/vim-go"]
+	path = pathogen/bundle/vim-go
+	url = https://github.com/fatih/vim-go.git
+[submodule "pathogen/bundle/vim-gocode"]
+	path = pathogen/bundle/vim-gocode
+	url = git@github.com:Blackrush/vim-gocode.git

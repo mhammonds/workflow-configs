@@ -6,6 +6,12 @@ fi
 # Vim Bindings
 set -o vi
 
+# Golang pathing
+export GOPATH=~/devel/go
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+
 # CLI Shortcuts
 alias ee="exit"
 alias ll='ls -lah'
@@ -24,6 +30,9 @@ alias vgu='vagrant up'
 alias vgh='vagrant halt'
 alias vgd='vagrant destroy'
 alias vgs='vagrant suspend'
+
+# Preprocessor Shortcuts
+alias lc='lessc'
 
 # Customize Bash Prompt
 PS1='\w \$ '

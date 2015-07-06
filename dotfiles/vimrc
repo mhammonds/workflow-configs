@@ -155,6 +155,11 @@ endtry
 " PLUGIN SHORTCUTS
 " ------------------------
 
+" PLUGIN: Syntastic
+" Set Pep8 line length to 79 (canonical)
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_pylint_post_args="--max-line-length=79"
+
 " PLUGIN: Emmet
 " Rebind emmet key code to ',h,'
 let g:user_emmet_leader_key='<C-h>'
