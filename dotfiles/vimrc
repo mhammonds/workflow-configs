@@ -156,13 +156,17 @@ endtry
 " ------------------------
 
 " PLUGIN: Syntastic
-" Set Pep8 line length to 79 (canonical)
 let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_python_pylint_post_args="--max-line-length=79"
+let g:syntastic_mode_map = { 'mode': 'passive',     
+                          \ 'active_filetypes': [],     
+                          \ 'passive_filetypes': [] }
+let g:syntastic_auto_loc_list=1
+map <leader>c :SyntasticCheck<CR>
+let g:syntastic_python_pylint_post_args="--ignored-classes=SQLAlchemy --max-line-length=79 --disable=W0232,R0903,C0103"
 
 " PLUGIN: Emmet
-" Rebind emmet key code to ',h,'
-let g:user_emmet_leader_key='<C-h>'
+" Rebind emmet key code to ',1,'
+" let g:user_emmet_leader_key='<C-1>'
 
 " PLUGIN: NERDTree
 " Load file browser more quickly witih ',nt'
