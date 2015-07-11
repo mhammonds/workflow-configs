@@ -11,7 +11,7 @@ if ARGV.length < 2
 end
 
 dev_extension = 'dev'
-filetypes = ['css','html','htm','php','rb','erb','less','js']
+filetypes = ['go', 'css','html','htm','php','rb','erb','less','js']
 watch_folder = ARGV[0]
 keyword = ARGV[1]
 puts "Watching #{watch_folder} and subfolders for changes in project files..."
@@ -31,6 +31,7 @@ while true do
     diff_hash.each do |df|
       puts "Detected change in #{df[0]}, refreshing"
       %x{osascript<<ENDGAME
+          delay 2
           tell application "Google Chrome"
               set windowList to every window
               repeat with aWindow in windowList
