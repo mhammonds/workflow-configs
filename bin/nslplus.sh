@@ -1,5 +1,5 @@
 #!/bin/bash
-# Lookup a domain's name servers across major providers
+# Query specific DNS servers to resolve NS for a domain
 
 if [ $# -eq 0 ]; then
     echo "No domain supplied."
