@@ -37,6 +37,11 @@ alias lc='lessc'
 # Customize Bash Prompt
 PS1='\w \$ '
 
+# Bash Functions
+lsfilesize() {
+    bash ~/workflow/bin/lsize.sh $1 $2
+}
+
 # Load private configs
 if [ -f ~/.bashrc_private ]; then
     source ~/.bashrc_private
