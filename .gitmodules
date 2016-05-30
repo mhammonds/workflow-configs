@@ -34,3 +34,6 @@
 [submodule "pathogen/bundle/vim-virtualenv"]
 	path = pathogen/bundle/vim-virtualenv
 	url = git@github.com:jmcantrell/vim-virtualenv.git
+[submodule "pathogen/bundle/vim-stylus"]
+	path = pathogen/bundle/vim-stylus
+	url = https://github.com/wavded/vim-stylus
