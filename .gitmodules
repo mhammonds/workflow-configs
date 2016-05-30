@@ -31,3 +31,6 @@
 [submodule "pathogen/bundle/vim-gocode"]
 	path = pathogen/bundle/vim-gocode
 	url = git@github.com:Blackrush/vim-gocode.git
+[submodule "pathogen/bundle/vim-virtualenv"]
+	path = pathogen/bundle/vim-virtualenv
+	url = git@github.com:jmcantrell/vim-virtualenv.git

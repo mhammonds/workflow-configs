@@ -31,7 +31,7 @@ while true do
     diff_hash.each do |df|
       puts "Detected change in #{df[0]}, refreshing"
       %x{osascript<<ENDGAME
-          delay 2
+          delay 1
           tell application "Google Chrome"
               set windowList to every window
               repeat with aWindow in windowList
