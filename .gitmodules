@@ -34,3 +34,6 @@
 [submodule "pathogen/bundle/vim-stylus"]
 	path = pathogen/bundle/vim-stylus
 	url = https://github.com/wavded/vim-stylus
+[submodule "pathogen/bundle/vim-YCM"]
+	path = pathogen/bundle/vim-YCM
+	url = https://github.com/ycm-core/YouCompleteMe.git
