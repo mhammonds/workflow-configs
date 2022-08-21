@@ -16,9 +16,6 @@
 [submodule "pathogen/bundle/vim-syntastic"]
 	path = pathogen/bundle/vim-syntastic
 	url = git@github.com:scrooloose/syntastic.git
-[submodule "pathogen/bundle/vim-YouCompleteMe"]
-	path = pathogen/bundle/vim-YouCompleteMe
-	url = git@github.com:Valloric/YouCompleteMe.git
 [submodule "submodules/gitignore"]
 	path = submodules/gitignore
 	url = git@github.com:bitmotive/gitignore.git
