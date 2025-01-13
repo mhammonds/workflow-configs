@@ -1,3 +1,6 @@
 [submodule "submodules/gitignore"]
 	path = submodules/gitignore
 	url = git@github.com:github/gitignore.git
+[submodule "submodules/fabric"]
+	path = submodules/fabric
+	url = git@github.com:danielmiessler/fabric.git
