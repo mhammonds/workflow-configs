@@ -1,18 +1,18 @@
 " DESCRIPTION:
-" This vim configuration utilizes a number of different plugins but
-" is reliant on none of them. You should be able to load it on any
-" UNIXy platform with a vim version > 7 thanks to the included conditionals.
-" I launch production servers with this config but without plugins.
+" A simple vim configuration for work across multiple environments where
+" a plugin ecosystem or standard IDE may not be present.
+" Should be compatible with any UNIXy platform with a vim version > 7. 
+" Typically used for server configuration and management.
 "
-" That said, I highly recommend the following plugins as a baseline for most use cases:
-"
-" - Pathogen
-" - Surround
-" - NERDTree
+" This configuration was previously setup to include key plugins via Pathogen. 
+" My approach to Vim on my workstation has evolved, and neovim configured with
+" LazyVim (https://www.youtube.com/watch?v=N93cTbtLCIM) is now my preferred
+" approach. 
 "
 " PRO TIP:
 " Get the most out of VIM. Remap your CAPSLOCK to CTRL.
 " Details - http://www.danielmiessler.com/blog/enhancements-to-shell-and-vim-productivity#capslock
+" CAPSLOCK to CTRL is configured in System Settings, not Vim.
 
 " ------------------------
 " BASELINE SETTINGS
@@ -31,23 +31,8 @@ if &t_Co > 2 || has("gui_running")
     set hlsearch
 endif
 
-" When editing a file, always jump to the last cursor position
-autocmd BufReadPost *
-\ if line("'\"") > 0 && line ("'\"") <= line("$") |
-\ exe "normal! g'\"" |
-\ endif
-
-" Prevent the cursor from moving when exiting INSERT mode
-let CursorColumnI = 0 "the cursor column position in INSERT
-autocmd InsertEnter * let CursorColumnI = col('.')
-autocmd CursorMovedI * let CursorColumnI = col('.')
-autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) | endif
-
 " Don't write swapfile on most commonly used directories for NFS mounts or USB sticks
 autocmd BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
-
-" Enable plugin support
-filetype plugin on
 
 " Sanity checks: make Vim perform more like a modern editor
 set nocompatible " Ensure that we're running in Vi Improved mode.
@@ -135,43 +120,3 @@ map <leader>Wr <C-w>R " Rotate window UP or LEFT
 " Quickly resize splits
 map <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 map <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
-
-" ------------------------
-" PATHOGEN CONFIGURATIONS
-" ------------------------
-
-" Initiate pathogen
-try
-    let pathogendir=expand("~/workflow/pathogen")
-    let &runtimepath.=','.escape(pathogendir, '\,')
-    let pathogenfile=pathogendir."/bundle/vim-pathogen/autoload/pathogen.vim"
-    execute "source ".pathogenfile
-    call pathogen#infect()
-catch
-    " Do nothing
-endtry
-
-" ------------------------
-" PLUGIN SHORTCUTS
-" ------------------------
-
-" PLUGIN: Syntastic
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_mode_map = { 'mode': 'passive',     
-                          \ 'active_filetypes': [],     
-                          \ 'passive_filetypes': [] }
-let g:syntastic_auto_loc_list=1
-map <leader>c :SyntasticCheck<CR>
-let g:syntastic_python_pylint_post_args="--ignored-classes=SQLAlchemy --max-line-length=79 --disable=W0232,R0903,C0103"
-
-" PLUGIN: Emmet
-" Rebind emmet key code to ',1,'
-" let g:user_emmet_leader_key='<C-1>'
-
-" PLUGIN: NERDTree
-" Load file browser more quickly witih ',nt'
-autocmd VimEnter * if exists(':NERDTreeToggle') | exe "map <leader>nt :NERDTreeToggle<CR>" | endif
-
-" PLUGIN: Gundo
-" Load Gundo more quickly witih ',gu'
-autocmd VimEnter * if exists(':GundoToggle') | exe "map <leader>gu :GundoToggle<CR>" | endif

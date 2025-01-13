@@ -6,12 +6,6 @@ fi
 # Vim Bindings
 set -o vi
 
-# Golang pathing
-export GOPATH=~/devel/go
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
-
 # CLI Shortcuts
 alias ee="exit"
 alias ll='ls -lah'

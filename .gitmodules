@@ -1,39 +1,3 @@
-[submodule "pathogen/bundle/vim-pathogen"]
-	path = pathogen/bundle/vim-pathogen
-	url = git@github.com:tpope/vim-pathogen.git
-[submodule "pathogen/bundle/vim-gundo"]
-	path = pathogen/bundle/vim-gundo
-	url = git@github.com:sjl/gundo.vim.git
-[submodule "pathogen/bundle/vim-markdown"]
-	path = pathogen/bundle/vim-markdown
-	url = git@github.com:plasticboy/vim-markdown.git
-[submodule "pathogen/bundle/vim-nerdtree"]
-	path = pathogen/bundle/vim-nerdtree
-	url = git@github.com:scrooloose/nerdtree.git
-[submodule "pathogen/bundle/vim-surround"]
-	path = pathogen/bundle/vim-surround
-	url = git@github.com:tpope/vim-surround.git
-[submodule "pathogen/bundle/vim-syntastic"]
-	path = pathogen/bundle/vim-syntastic
-	url = git@github.com:scrooloose/syntastic.git
 [submodule "submodules/gitignore"]
 	path = submodules/gitignore
 	url = git@github.com:bitmotive/gitignore.git
-[submodule "pathogen/bundle/vim-emmet"]
-	path = pathogen/bundle/vim-emmet
-	url = https://github.com/mattn/emmet-vim.git
-[submodule "pathogen/bundle/vim-go"]
-	path = pathogen/bundle/vim-go
-	url = https://github.com/fatih/vim-go.git
-[submodule "pathogen/bundle/vim-gocode"]
-	path = pathogen/bundle/vim-gocode
-	url = git@github.com:Blackrush/vim-gocode.git
-[submodule "pathogen/bundle/vim-virtualenv"]
-	path = pathogen/bundle/vim-virtualenv
-	url = git@github.com:jmcantrell/vim-virtualenv.git
-[submodule "pathogen/bundle/vim-stylus"]
-	path = pathogen/bundle/vim-stylus
-	url = https://github.com/wavded/vim-stylus
-[submodule "pathogen/bundle/vim-YCM"]
-	path = pathogen/bundle/vim-YCM
-	url = https://github.com/ycm-core/YouCompleteMe.git
